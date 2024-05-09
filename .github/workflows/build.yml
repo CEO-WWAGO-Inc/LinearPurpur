@@ -11,8 +11,13 @@ jobs:
           distribution: temurin
           java-version: 17
       - name: Configure Git
-        run: git config --global user.email "action@github.com" && git config --global user.name "Github Action"
+        run: git config --global user.email "167962724+WAWAWOGO@users.noreply.github.com" && git config --global user.name "WAWAWOGO"
       - name: Apply patches
         run: ./gradlew applyPatches --stacktrace
-      - name: Build
-        run: ./gradlew build --stacktrace
+      - name: Build Paperclip Jar
+        run: ./gradlew createReobfPaperclipJar --stacktrace
+      - name: Upload Paperclip Jar
+        uses: actions/upload-artifact@v3
+        with:
+          name: linearpurpur.jar
+          path: build/libs/linearpurpur-paperclip-*-reobf.jar
