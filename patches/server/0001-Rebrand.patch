@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: Triassic <techbyteofficial9@gmail.com>
-Date: Thu, 16 Sep 2021 20:39:45 -0400
+From: GesundesWasser <gesudeswasser@duck.com>
+Date: Thu, 9 May 2024 15:01:26 +0200
 Subject: [PATCH] Rebrand
 
 
@@ -14,7 +14,7 @@ index 92118ece03afbe49bbe4dbe8a54c6d434434bd0c..472a07e4bbcf9d523075edb457e82237
  dependencies {
 -    // Purpur start
 -    implementation(project(":purpur-api"))
-+    implementation(project(":linearpurpur-api")) // Purpur // LinearPurpur
++    implementation(project(":scambukkit-api")) // Purpur // ScamBukkit
      implementation("io.papermc.paper:paper-mojangapi:${project.version}") {
          exclude("io.papermc.paper", "paper-api")
      }
@@ -27,7 +27,7 @@ index 92118ece03afbe49bbe4dbe8a54c6d434434bd0c..472a07e4bbcf9d523075edb457e82237
              "Main-Class" to "org.bukkit.craftbukkit.Main",
              "Implementation-Title" to "CraftBukkit",
 -            "Implementation-Version" to "git-Purpur-$implementationVersion", // Pufferfish // Purpur
-+            "Implementation-Version" to "git-LinearPurpur-$implementationVersion", // Pufferfish // Purpur // LinearPurpur
++            "Implementation-Version" to "git-ScamBukkit-$implementationVersion", // Pufferfish // Purpur // ScamBukkit
              "Implementation-Vendor" to date, // Paper
              "Specification-Title" to "Bukkit",
              "Specification-Version" to project.version,
@@ -41,8 +41,8 @@ index 462a6eed350fd660ddaf25d567bb6e97b77d0b2b..00067a12d3909ea4299d95c8b04970a2
      public Component getVersionMessage(@Nonnull String serverVersion) {
 -        String[] parts = serverVersion.substring("git-Purpur-".length()).split("[-\\s]"); // Purpur
 -        final Component updateMessage = getUpdateStatusMessage("PurpurMC/Purpur", "ver/" + getMinecraftVersion(), parts[0]); // Purpur
-+        String[] parts = serverVersion.substring("git-LinearPurpur-".length()).split("[-\\s]"); // Purpur // LinearPurpur
-+        final Component updateMessage = getUpdateStatusMessage("StupidCraft/LinearPurpur", "ver/" + getMinecraftVersion(), parts[0]); // Purpur // LinearPurpur
++        String[] parts = serverVersion.substring("git-ScamBukkit-".length()).split("[-\\s]"); // Purpur // ScamBukkit
++        final Component updateMessage = getUpdateStatusMessage("GesundesWasser/ScamBukkit", "ver/" + getMinecraftVersion(), parts[0]); // Purpur // ScamBukkit
          final Component history = getHistory();
  
          return history != null ? Component.join(net.kyori.adventure.text.JoinConfiguration.separator(Component.newline()), history, updateMessage) : updateMessage; // Purpur
@@ -50,7 +50,7 @@ index 462a6eed350fd660ddaf25d567bb6e97b77d0b2b..00067a12d3909ea4299d95c8b04970a2
  
      private static Component getUpdateStatusMessage(@Nonnull String repo, @Nonnull String branch, @Nonnull String versionInfo) {
          //int distance; // Purpur - use field
-+        /* // LinearPurpur start - disable jenkins/api checking
++        /* // ScamBukkit start - disable jenkins/api checking
          try {
              int jenkinsBuild = Integer.parseInt(versionInfo);
              distance = fetchDistanceFromSiteApi(jenkinsBuild, getMinecraftVersion());
@@ -61,7 +61,7 @@ index 462a6eed350fd660ddaf25d567bb6e97b77d0b2b..00067a12d3909ea4299d95c8b04970a2
 +        */
 +        versionInfo = versionInfo.replace("\"", "");
 +        distance = fetchDistanceFromGitHub(repo, branch, versionInfo);
-+        // LinearPurpur end
++        // ScamBukkit end
  
          switch (distance) {
              case -1:
@@ -74,7 +74,7 @@ index a1a3b66e53e7be6b913302a5da15271f6fdc1639..cf242c51f6c003ee8d53637f2f594cf1
  
  public final class CraftServer implements Server {
 -    private final String serverName = "Purpur"; // Paper // Pufferfish // Purpur
-+    private final String serverName = "LinearPurpur"; // Paper // Pufferfish // Purpur // LinearPurpur
++    private final String serverName = "ScamBukkit"; // Paper // Pufferfish // Purpur // ScamBukkit
      private final String serverVersion;
      private final String bukkitVersion = Versioning.getBukkitVersion();
      private final Logger logger = Logger.getLogger("Minecraft");
@@ -87,7 +87,7 @@ index 99597258e8e88cd9e2c901c4ac3ff7faeeabee2b..9e83dfe18d289bff3f74d8f0bf3bbc47
          String result = "Unknown-Version";
  
 -        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/org.purpurmc.purpur/purpur-api/pom.properties"); // Pufferfish // Purpur
-+        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/org.stupidcraft.linearpurpur/linearpurpur-api/pom.properties"); // Pufferfish // Purpur // LinearPurpur
++        InputStream stream = Bukkit.class.getClassLoader().getResourceAsStream("META-INF/maven/net.scamcraft.scambukkit/scambukkit-api/pom.properties"); // Pufferfish // Purpur // ScamBukkit
          Properties properties = new Properties();
  
          if (stream != null) {
@@ -100,7 +100,7 @@ index 3633574e112f217b412217dd243a631dc4e9c40c..1277be15f848b47346879f62488d726a
      }
  
 -    public static String serverModName = "Purpur";
-+    public static String serverModName = "LinearPurpur"; // LinearPurpur
++    public static String serverModName = "ScamBukkit"; // ScamBukkit
      private static void serverModName() {
          serverModName = getString("settings.server-mod-name", serverModName);
      }

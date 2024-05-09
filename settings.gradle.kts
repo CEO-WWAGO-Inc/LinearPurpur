@@ -15,18 +15,18 @@ if (!file(".git").exists()) {
     val errorText = """
         
         =====================[ ERROR ]=====================
-         The LinearPurpur project directory is not a properly cloned Git repository.
+         The ScamBukkit project directory is not a properly cloned Git repository.
          
-         In order to build LinearPurpur from source you must clone
+         In order to build ScamBukkit from source you must clone
          the repository using Git, not download a code zip from GitHub.
         ===================================================
     """.trimIndent()
     error(errorText)
 }
 
-rootProject.name = "linearpurpur"
+rootProject.name = "scambukkit"
 
-for (name in listOf("LinearPurpur-API", "LinearPurpur-Server")) {
+for (name in listOf("ScamBukkit-API", "ScamBukkit-Server")) {
     val projName = name.lowercase(Locale.ENGLISH)
     include(projName)
     findProject(":$projName")!!.projectDir = file(name)

@@ -63,7 +63,7 @@ dependencies {
 }
 
 paperweight {
-    serverProject.set(project(":linearpurpur-server"))
+    serverProject.set(project(":scambukkit-server"))
 
     remapRepo.set(paperMavenPublicUrl)
     decompileRepo.set(paperMavenPublicUrl)
@@ -76,16 +76,16 @@ paperweight {
             baseName("Purpur")
 
             apiPatchDir.set(layout.projectDirectory.dir("patches/api"))
-            apiOutputDir.set(layout.projectDirectory.dir("LinearPurpur-API"))
+            apiOutputDir.set(layout.projectDirectory.dir("ScamBukkit-API"))
 
             serverPatchDir.set(layout.projectDirectory.dir("patches/server"))
-            serverOutputDir.set(layout.projectDirectory.dir("LinearPurpur-Server"))
+            serverOutputDir.set(layout.projectDirectory.dir("ScamBukkit-Server"))
         }
     }
 }
 
 tasks.generateDevelopmentBundle {
-    apiCoordinates.set("org.stupidcraft.linearpurpur:linearpurpur-api")
+    apiCoordinates.set("net.scamcraft.scambukkit:scambukkit-api")
     mojangApiCoordinates.set("io.papermc.paper:paper-mojangapi")
     libraryRepositories.set(
         listOf(
@@ -100,7 +100,7 @@ allprojects {
     publishing {
         repositories {
             maven("https://repo.purpurmc.org/snapshots") {
-                name = "linearpurpur"
+                name = "scambukkit"
                 credentials(PasswordCredentials::class)
             }
         }
@@ -121,7 +121,7 @@ tasks.register("printMinecraftVersion") {
     }
 }
 
-tasks.register("printLinearPurpurVersion") {
+tasks.register("printScamBukkitVersion") {
     doLast {
         println(project.version)
     }
