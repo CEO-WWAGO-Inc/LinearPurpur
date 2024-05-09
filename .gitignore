@@ -51,7 +51,7 @@ manifest.mf
 run/
 
 build-data/
-LinearPurpur-API
-LinearPurpur-MojangAPI
-LinearPurpur-Server
+ScamBukkit-API
+ScamBukkit-MojangAPI
+ScamBukkit-Server
 *.jar
