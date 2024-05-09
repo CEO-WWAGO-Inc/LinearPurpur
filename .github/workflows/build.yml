@@ -20,4 +20,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: linearpurpur.jar
-          path: build/libs/linearpurpur-paperclip-*-reobf.jar
+          path: build/libs/scambukkit-paperclip-*-reobf.jar
